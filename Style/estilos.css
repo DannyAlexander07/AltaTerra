@@ -1,0 +1,1140 @@
+/* ============================================================= */
+/* == ESTILOS GENERALES Y RESET                             == */
+/* ============================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 15px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* Agregamos un color de fondo base por si alguna imagen no carga */
+    background-color: #143c5c ; 
+}
+
+
+/* ============================================================= */
+/* == ESTRUCTURA PRINCIPAL CON GRID AREAS                     == */
+/* ============================================================= */
+.main {
+    width: 100%;
+    display: grid;
+    /* Define una sola columna que ocupa todo el ancho */
+    grid-template-columns: 1fr;
+    /* Define 12 filas, cada una con la altura de la ventana (100vh) */
+    grid-template-rows: repeat(12, 100dvh);
+    /* Nombra cada una de las áreas de la cuadrícula para un fácil posicionamiento */
+    grid-template-areas:
+        "parte1"
+        "parte2"
+        "parte3"
+        "parte4"
+        "parte5"
+        "parte6"
+        "parte7"
+        "parte8"
+        "parte9"
+        "parte10"
+        "parte11"
+        "parte12";
+}
+
+/* Asigna cada sección a su área correspondiente */
+.primera  { grid-area: parte1; }
+.segunda  { grid-area: parte2; }
+.tercera  { grid-area: parte3; }
+.cuarta   { grid-area: parte4; }
+.quinta   { grid-area: parte5; }
+.sexta    { grid-area: parte6; }
+.septima  { grid-area: parte7; }
+.octava   { grid-area: parte8; }
+.novena   { grid-area: parte9; }
+.decima   { grid-area: parte10; }
+.onceava  { grid-area: parte11; }
+.doceava  { grid-area: parte12; }
+
+/* 
+  Aseguramos que cada sección llene su área por completo.
+  Esto anula la necesidad de `min-height: 100vh` en cada una.
+*/
+/* .primera, .segunda, .tercera, .cuarta, .quinta, .sexta, .septima, .octava, .novena, .decima, .onceava, .doceava {
+    width: 100%;
+    min-height: 100%; /* Cada sección ocupa el 100% de la altura de su fila (100vh) */
+    /*padding: 60px 40px; /* Un padding base para todas las secciones */
+    /*box-sizing: border-box;
+    position: relative; /* Base para posicionar elementos internos de forma absoluta */
+    /*overflow: hidden; /* Evita que elementos se desborden */
+/*}*/ 
+
+
+.main > section {
+    width: 100%;
+    height: 100%; /* Clave: La sección ocupa el 100% de su fila en el grid. */
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    color: #ffffff; /* Un color de texto base para todas */
+
+    /* Un padding general que puede ser sobreescrito después */
+    padding: 40px 60px;
+}
+
+/* section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+ */
+/* ============================================================= */
+/* == ESTILOS SECCIÓN 1: PRIMERA (PORTADA CON GIF)          == */
+/* ============================================================= */
+/* --- Estilo INICIAL del Header (cuando está en la parte superior) --- */
+.header {
+    position: absolute; /* Posicionado dentro de la sección "primera" */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5000;
+    background-color: transparent; /* Fondo transparente al inicio */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil */
+    transition: background-color 0.4s ease-in-out, backdrop-filter 0.4s ease-in-out;
+}
+
+/* --- Estilo del Header CUANDO SE HACE SCROLL (se vuelve fijo) --- */
+.header.scrolled {
+    position: fixed; /* ¡CAMBIA a posición fija! */
+    background-color: rgba(10, 42, 75, 0.8); /* Fondo semitransparente oscuro */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    height: 80px; /* Altura del header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo img {
+    height: 30px; /* Tamaño del logo */
+    width: auto;
+}
+
+.header-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 35px; /* Espacio entre los elementos del menú */
+}
+
+.header-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.header-nav a:hover {
+    color: #6c9cec;
+}
+
+/* Línea sutil debajo del enlace al pasar el mouse */
+.header-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #6c9cec;
+    transition: width 0.3s ease;
+}
+
+.header-nav a:hover::after {
+    width: 100%;
+}
+
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.lang-switcher a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.lang-switcher .lang-inactive {
+    opacity: 0.6;
+}
+
+.lang-switcher a:hover {
+    color: #6c9cec;
+    opacity: 1;
+}
+
+.primera {
+    background-image: url('../Assets/video/1\ social_tecnologiamood_Imagen_de_un_ingeniero_de_minas_luciendo_ropa__f4bfcc2b-db1d-4d64-848c-577117b6a7d8_0.gif');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    z-index: 2000;
+}
+
+.logo {
+    width: 15rem;
+    height: auto;
+    margin: 20px;
+}
+
+
+/* ============================================================= */
+/* == ESTILOS SECCIÓN 2: SEGUNDA (NUESTRA HISTORIA)         == */
+/* ============================================================= */
+.segunda {
+    /* Combinamos el overlay de color y la imagen de fondo en una sola propiedad */
+    background: 
+        /* Capa 1: Overlay de color negro semitransparente. */
+        linear-gradient(#0a2a4bb3, #0a2a4b51),
+        /* Capa 2: Tu imagen de fondo. */
+        url('../Assets/img/mapa_fondo.png');
+    
+    /* El resto de las propiedades de fondo se aplican a la última imagen */
+    background-size: cover;
+    background-position: center -70%; /* Ajustado para mejor compatibilidad */
+    
+    /* El resto de tu código no cambia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.historia-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1100px;
+    gap: 50px;
+}
+
+.historia-titulo {
+    flex-basis: 40%;
+    text-align: right;
+    padding-right: 50px;
+}
+
+.historia-titulo h1 {
+    font-size: 2.8rem;
+    color: #ffffff;
+    font-weight: 300;
+    margin: 0;
+}
+
+.historia-titulo h1 strong {
+    font-weight: 700;
+}
+
+.historia-texto {
+    flex-basis: 40%;
+    padding-left: 50px;
+    border-left: 1px dotted #ffffff80;
+    color: #ffffff;
+}
+
+.historia-texto p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5em;
+}
+
+.historia-texto p:last-child {
+    margin-bottom: 0;
+}
+
+.historia-texto a {
+    color: #4db8ff;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 4px;
+    cursor: pointer;
+}
+
+.segunda .firma {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1000;
+}
+
+.segunda .firma-img {
+    width: 120px;
+    height: auto;
+}
+
+
+/* ============================================================= */
+/* == ESTILOS SECCIÓN 3: TERCERA (LO QUE OFRECEMOS)         == */
+/* ============================================================= */
+.tercera {
+    background: 
+        /* Capa 1: Overlay de color negro semitransparente. */
+        linear-gradient(#0a2a4b47, #0a2a4b51),
+        /* Capa 2: Tu imagen de fondo. */
+        url('../Assets/img/mapa_fondo.png');
+    background-size: cover;
+    background-position: center -70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.tercera .ofrecemos {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.grid-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tercera .caja {
+    display: flex;
+}
+
+.tercera .bloque {
+    width: 380px;
+    height: 160px;
+    padding: 25px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    border: 1px dashed #fff;
+    margin: 2px 3px;
+}
+
+.tercera .parrafo-bloque {
+    margin: 0;
+    line-height: 1.1;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.tercera .parrafo-bloque strong {
+    font-weight: 700;
+}
+
+
+
+/* --- Iconos y líneas para la sección "Tercera" --- */
+.grup1, .grup2, .grup3, .grup4 {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #6c9cec  ; /* Color base para los círculos */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grup3{
+    background-color: #1454cc;
+}
+
+.grup4{
+    background-color: #1c4484 ;
+}
+
+.grup1 { top: -20px; left: -20px; }
+.grup2 { top: -20px; right: -20px; }
+.grup3 { bottom: -20px; left: -20px; }
+.grup4 { bottom: -20px; right: -20px; }
+
+.icono-decorativo {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* Líneas de conexión */
+.grup1::after { top: 50%; left: 50%; border-right-width: 1px; border-bottom-width: 1px; }
+.grup2::after { top: 50%; right: 50%; border-left-width: 1px; border-bottom-width: 1px; }
+.grup3::after { bottom: 50%; left: 50%; border-right-width: 1px; border-top-width: 1px; }
+.grup4::after { bottom: 50%; right: 50%; border-left-width: 1px; border-top-width: 1px; }
+
+/* ============================================================= */
+/* == ESTILOS SECCIÓN 4: CUARTA (¿CÓMO TRABAJAMOS?)         == */
+/* ============================================================= */
+.cuarta {
+    background: 
+        /* Capa 1: Overlay de color negro semitransparente. */
+        linear-gradient(#0a2a4b47, #0a2a4b51),
+        /* Capa 2: Tu imagen de fondo. */
+        url('../Assets/img/mapa_fondo.png');
+    background-size: cover;
+    background-position: center -70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.trabajamos-titulo {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.trabajo-grid-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cuarta .trabajo-caja {
+    display: flex;
+}
+
+.cuarta .trabajo-bloque {
+    width: 380px;
+    height: 160px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #fff;
+    margin: 2px 3px;
+}
+
+.cuarta .parrafo-trabajo {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+
+/* --- Círculos Numerados --- */
+.numero-circulo {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #3b82f6; /* Color azul para los círculos */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* Posicionamiento exacto de cada círculo en las esquinas de la cuadrícula */
+#numero-1 { top: 0; left: 0; transform: translate(-50%, -50%); }
+#numero-2 { top: 0; right: 0; transform: translate(50%, -50%); }
+#numero-3 { bottom: 0; left: 0; transform: translate(-50%, 50%); }
+#numero-4 { bottom: 0; right: 0; transform: translate(50%, 50%); }
+
+
+/* --- Líneas Punteadas de Conexión --- */
+.numero-circulo::after {
+    content: '';
+    position: absolute;
+    border-color: rgba(255, 255, 255, 0.4);
+    border-style: dotted;
+    border-width: 0;
+}
+
+/* ============================================================= */
+/* == ESTILOS SECCIÓN 5: QUINTA (VENTAJA COMPETITIVA)       == */
+/* ============================================================= */
+.quinta {
+    background: 
+        /* Capa 1: Overlay de color negro semitransparente. */
+        linear-gradient(#0a2a4b47, #0a2a4b51),
+        /* Capa 2: Tu imagen de fondo. */
+        url('../Assets/img/mapa_fondo.png');
+    background-size: cover;
+    background-position: center -70%;
+    
+    /* Centramos el contenido vertical y horizontalmente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+.ventaja-titulo {
+    font-size: 3rem;
+    font-weight: 700; /* Texto en negrita */
+    max-width: 900px; /* Evita que el texto sea demasiado ancho en pantallas grandes */
+}
+
+/* ============================================================= */
+/* == ESTILOS SECCIÓN 6: SEXTA (GLOBAL REACH) - CORREGIDO   == */
+/* ============================================================= */
+.sexta {
+    /* Fondo con overlay + imagen */
+    background: 
+        linear-gradient(#0a2a4b47, #0a2a4b51),
+        url('../Assets/video/2 social_tecnologiamood_Imagen_de_un_ingeniero_de_minas_luciendo_ropa__f4bfcc2b-db1d-4d64-848c-577117b6a7d8_0.gif');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+
+    /* Flexbox para alinear contenido */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* Espaciado interno */
+    padding-left: 11vw; 
+    row-gap: 0.8rem; /* espacio entre elementos */
+}
+
+/* ESTILO NUEVO: Para el título "Global Reach:" */
+.global {
+    background-color: #264575; /* Fondo de color azul sólido */
+    padding: 1rem 1.9rem;      /* Espacio interior para que se vea como un botón */
+    font-size: 1.7rem;         /* Tamaño de la fuente */
+    font-weight: 700;          /* Texto en negrita */
+    margin-bottom: 1rem;       /* Espacio debajo del recuadro azul */
+    display: inline-block;     /* Importante para que el fondo se ajuste al texto */
+    border-radius: 1rem;
+    text-align: center;
+}
+
+/* ESTILO NUEVO: Para el párrafo de descripción */
+.parrafo-sexta {
+    font-size: 2.2rem;   /* Letra más grande, como en la imagen */
+    line-height: 1.4;    /* Espacio entre líneas */
+    font-weight: 400;    /* Fuente de peso normal */
+    max-width: 580px;    /* Evita que el texto sea demasiado largo */
+    text-align: center;
+}
+
+/* ============================================================= */
+/* == ESTILOS SECCIÓN 7: SEPTIMA (GROUNDED VALUE)           == */
+/* ============================================================= */
+.septima {
+    /* --- IMPORTANTE --- */
+    /* Reemplaza esta ruta con tu imagen de fondo */
+    background: 
+        /* Capa 1: Overlay oscuro para legibilidad */
+        linear-gradient(#0a2a4b28, #0a2a4b4f),
+        /* Capa 2: Tu imagen de fondo */
+        url('../Assets/video/4\ social_tecnologiamood_Imagen_de_un_ingeniero_de_minas_luciendo_ropa__f4bfcc2b-db1d-4d64-848c-577117b6a7d8_0.gif');
+    
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 11vw; 
+    row-gap: 0.8rem;
+    text-align: center; 
+}
+
+.global-septima{
+    background-color: #3c6c8c ; /* Fondo de color azul sólido */
+    padding: 1.1rem 1.9rem;      /* Espacio interior para que se vea como un botón */
+    font-size: 1.7rem;         /* Tamaño de la fuente */
+    font-weight: 700;          /* Texto en negrita */
+    margin-bottom: 1rem;       /* Espacio debajo del recuadro azul */
+    display: inline-block;     /* Importante para que el fondo se ajuste al texto */
+    border-radius: 1rem;
+}
+
+.parrafo-septima {
+    font-size: 2rem;   /* Letra más grande, como en la imagen */
+    line-height: 1.1;    /* Espacio entre líneas */
+    font-weight: 400;    /* Fuente de peso normal */
+    max-width: 600px;    /* Evita que el texto sea demasiado largo */
+    text-align: center;
+}
+
+/* ============================================================= */
+/* == ESTILOS SECCIÓN 8: Octava (GROUNDED VALUE)           == */
+/* ============================================================= */
+
+.octava {
+    /* --- IMPORTANTE --- */
+    /* Reemplaza esta ruta con tu imagen de fondo */
+    background: 
+        /* Capa 1: Overlay oscuro para legibilidad */
+        linear-gradient(#0a2a4b28, #0a2a4b4f),
+        /* Capa 2: Tu imagen de fondo */
+        url('../Assets/video/5\ social_tecnologiamood_Imagen_de_un_ingeniero_de_minas_luciendo_ropa__f4bfcc2b-db1d-4d64-848c-577117b6a7d8_0.gif');
+    
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 11vw;
+    row-gap: 0.8rem; 
+    text-align: center;
+}
+
+.global-octava{
+    background-color: #264575 ; /* Fondo de color azul sólido */
+    padding: 1.1rem 1.9rem;      /* Espacio interior para que se vea como un botón */
+    font-size: 1.7rem;         /* Tamaño de la fuente */
+    font-weight: 700;          /* Texto en negrita */
+    margin-bottom: 1rem;       /* Espacio debajo del recuadro azul */
+    display: inline-block;     /* Importante para que el fondo se ajuste al texto */
+    border-radius: 1rem;
+    text-align: center;
+}
+
+
+.parrafo-octava {
+    font-size: 2rem;   /* Letra más grande, como en la imagen */
+    line-height: 1.1;    /* Espacio entre líneas */
+    font-weight: 400;    /* Fuente de peso normal */
+    max-width: 600px;    /* Evita que el texto sea demasiado largo */
+    text-align: center;
+}
+
+/* ============================================================= */
+/* == ESTILOS SECCIÓN 9: NOVENA (EXPERIENCIA QUE IMPACTA)   == */
+/* ============================================================= */
+.novena {
+    background: 
+        /* Overlay oscuro */
+        linear-gradient(#0a2a4b47, #0a2a4b51),
+        /* Imagen de fondo consistente */
+        url('../Assets/img/mapa_fondo.png');
+    background-size: cover;
+    background-position: center -70%;
+    color: #ffffff;
+    
+    /* Centramos el contenedor principal verticalmente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.experiencia-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1100px; /* Ancho máximo del contenido */
+    gap: 50px;         /* Espacio entre columnas */
+}
+
+/* Columna Izquierda: Título */
+.experiencia-titulo {
+    flex-basis: 40%;
+    text-align: right;
+    padding-right: 50px;
+}
+
+.experiencia-titulo h2 {
+    font-size: 2.8rem;
+    line-height: 1.1;
+    font-weight: 100; /* Para la parte "que impacta" */
+    margin: 0;
+}
+
+.experiencia-titulo h2 strong {
+    font-weight: 900; /* Para la palabra "Experiencia" */
+}
+
+/* Columna Derecha: Párrafo con línea divisoria */
+.experiencia-texto {
+    flex-basis: 60%;
+    padding-left: 50px;
+    border-left: 1px dotted #ffffff80;
+
+    /* AÑADIDO: Aumentamos el padding vertical para alargar la línea */
+    padding-top: 110px;
+    padding-bottom: 110px;
+}
+
+.experiencia-texto p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 420px; /* Evita que las líneas de texto sean demasiado largas */
+}
+
+/* --- Logo en la esquina --- */
+.novena .firma {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+}
+
+.novena .firma-img {
+    width: 120px;
+    height: auto;
+}
+
+/* ============================================================= */
+/* == ESTILOS SECCIÓN 10: DECIMA (PROFESIONALES)            == */
+/* ============================================================= */
+.decima {
+    background: 
+        /* Overlay oscuro */
+        linear-gradient(#0a2a4b47, #0a2a4b51),
+        /* Imagen de fondo consistente */
+        url('../Assets/img/mapa_fondo.png');
+    background-size: cover;
+    background-position: center -70%;
+    color: #ffffff;
+    
+    /* Centramos el contenido vertical y horizontalmente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.profesionales-texto {
+    font-size: 2.5rem; /* Tamaño de fuente grande para impacto */
+    line-height: 1.5;
+    font-weight: 300; /* Fuente más delgada para el texto blanco */
+    max-width: 950px; /* Ancho máximo para el párrafo */
+}
+
+/* Estilo para las palabras envueltas en el <span> */
+.texto-resaltado-azul {
+    color: #3b82f6;   /* Color azul brillante */
+    font-weight: 700; /* Texto en negrita */
+}
+
+
+/* ============================================================= */
+/* == ESTILOS SECCIÓN 11: ONCEAVA (CONTACTO / FOOTER)       == */
+/* ============================================================= */
+.onceava {
+    background: 
+        /* Overlay oscuro */
+        linear-gradient(#0a2a4b47, #0a2a4b51),
+        /* Imagen de fondo */
+        url('../Assets/img/mapa_fondo.png');
+    background-size: cover;
+    background-position: center -70%;
+    color: #ffffff;
+    
+    /* Centramos el contenedor de contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contacto-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 950px;
+}
+
+.contacto-texto {
+    font-size: 2.2rem;
+    line-height: 1.5;
+    font-weight: 300;
+    margin-bottom: 50px; /* Espacio entre el párrafo y la info de contacto */
+}
+
+/* Reutilizamos la clase .texto-resaltado-azul que ya creamos */
+
+.info-contacto-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* Espacio entre el email y el website */
+    flex-wrap: wrap; /* Permite que los elementos se apilen en pantallas pequeñas */
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre el icono y el texto */
+}
+
+.info-icono {
+    width: 44px;
+    height: 44px;
+    background-color: #3b82f6; /* Círculo azul */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Evita que el círculo se encoja */
+}
+
+.info-icono img {
+    width: 24px;
+    height: 24px;
+}
+
+.info-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.info-link:hover {
+    text-decoration: underline;
+}
+
+/* --- Logo en la esquina --- */
+.onceava .firma {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+}
+
+.onceava .firma-img {
+    width: 120px;
+    height: auto;
+}
+
+
+/* ============================================================= */
+/* == ESTILOS SECCIÓN 12: DOCEAVA (CIERRE / GRACIAS)        == */
+/* ============================================================= */
+.doceava {
+    /* Mantenemos el fondo que ya tienes */
+    background-image: url('../Assets/video/1\ social_tecnologiamood_Imagen_de_un_ingeniero_de_minas_luciendo_ropa__f4bfcc2b-db1d-4d64-848c-577117b6a7d8_0.gif');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    
+    /* Tu layout de centrado es perfecto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* La posición relativa es necesaria para que el overlay funcione */
+    position: relative; 
+    z-index: 4000;
+}
+
+/* AÑADIDO: Creamos un overlay oscuro para que el texto sea siempre legible */
+.doceava::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Overlay azul oscuro semitransparente. Puedes ajustar el 0.6 para más o menos oscuridad */
+    background-color: #0a2a4b47; 
+    /* Colocamos el overlay detrás del contenido pero encima del fondo */
+    z-index: 0; 
+}
+
+/* AÑADIDO: Hacemos que el contenido esté por encima del overlay */
+.gracias, .logo-despedida {
+    position: relative;
+    z-index: 1;
+}
+
+/* AÑADIDO: Estilos para el texto "¡Gracias!" */
+.gracias {
+    font-size: 3.5rem;
+    font-weight: 700; /* Texto en negrita */
+    margin-bottom: 2rem; /* Espacio entre el texto y el logo */
+}
+
+/* AÑADIDO: Estilos para el logo de despedida */
+.logo-despedida {
+    width: 250px; /* Un tamaño adecuado para el logo final */
+    height: auto;
+}
+
+/* ============================================================= */
+/* == ESTILOS FOOTER (COPYRIGHT)                            == */
+/* ============================================================= */
+.footer {
+    position: relative;
+    z-index: 3000; /* Aseguramos que el footer esté por encima de otros elementos */
+    width: 100%;
+    padding: 2rem 40px;
+    background-color: #061a2f; /* Un azul muy oscuro, casi negro */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.copyright-text {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6); /* Blanco semitransparente para que sea sutil */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* ============================================================= */
+/* ============================================================= */
+/* ==                INICIO DE ESTILOS RESPONSIVE             == */
+/* ============================================================= */
+/* ============================================================= */
+
+
+/* ============================================================= */
+/* == AJUSTES PARA TABLETS Y PANTALLAS PEQUEÑAS (hasta 1024px) == */
+/* ============================================================= */
+@media (max-width: 1024px) {
+
+    /* --- AJUSTES GENERALES --- */
+    html {
+        font-size: 14px; /* Reducimos la base para que los 'rem' sean más pequeños */
+    }
+
+    .main > section {
+        padding: 40px; /* Reducimos el padding horizontal */
+    }
+
+    /* --- SECCIÓN 2 y 9: Columnas de texto --- */
+    .historia-container,
+    .experiencia-container {
+        max-width: 90%;
+        gap: 30px;
+    }
+
+    .historia-titulo,
+    .experiencia-titulo {
+        padding-right: 30px;
+        flex-basis: 45%;
+    }
+    .historia-texto,
+    .experiencia-texto {
+        padding-left: 30px;
+        flex-basis: 55%;
+    }
+
+    /* --- SECCIÓN 3 y 4: Grids 2x2 --- */
+    .tercera .bloque,
+    .cuarta .trabajo-bloque {
+        width: 320px; /* Reducimos el ancho de los bloques */
+        height: auto;
+        min-height: 160px;
+    }
+    
+    /* --- TAMAÑOS DE FUENTE --- */
+    .profesionales-texto,
+    .contacto-texto {
+        font-size: 2.2rem;
+    }
+    
+    .parrafo-sexta,
+    .parrafo-septima,
+    .parrafo-octava {
+        font-size: 2rem;
+        max-width: 90%;
+    }
+}
+
+
+/* ============================================================= */
+/* == AJUSTES PARA MÓVILES (hasta 768px)                      == */
+/* ============================================================= */
+@media (max-width: 768px) {
+
+    /* --- LA MAGIA PRINCIPAL: DESACTIVAMOS EL GRID DE PANTALLA COMPLETA --- */
+    .main {
+        display: block; /* Cambiamos de grid a block para un scroll normal */
+    }
+
+    .main > section {
+        height: auto; /* La altura se ajustará al contenido */
+        min-height: 100dvh; /* Cada sección ocupará al menos una pantalla de alto */
+        padding: 80px 25px; /* Más padding vertical, menos horizontal */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center; /* Centramos el texto por defecto */
+    }
+
+    /* --- HEADER Y NAVEGACIÓN MÓVIL --- */
+    /* (En un paso futuro, aquí podríamos añadir un menú hamburguesa) */
+    .header-nav {
+        display: none; /* Ocultamos la navegación de escritorio por ahora */
+    }
+    .header-container {
+        padding: 0 25px;
+    }
+    .header-logo img {
+        height: 24px;
+    }
+
+    /* --- SECCIÓN 1: PORTADA --- */
+    .logo {
+        width: 12rem;
+    }
+    
+    /* --- SECCIÓN 2: HISTORIA --- */
+    .historia-container {
+        flex-direction: column; /* Apilamos las columnas */
+        gap: 20px;
+        width: 100%;
+    }
+    .historia-titulo {
+        padding-right: 0;
+        text-align: center;
+    }
+    .historia-titulo h1 {
+        font-size: 2.5rem;
+    }
+    .historia-texto {
+        padding-left: 0;
+        border-left: none; /* Eliminamos la línea divisoria */
+        border-top: 1px dotted #ffffff80;
+        padding-top: 30px;
+    }
+    .historia-texto p {
+        font-size: 1rem;
+    }
+    .segunda .firma {
+        display: none; /* Ocultamos el logo fijo en la esquina */
+    }
+
+    /* --- SECCIÓN 3 y 4: "Ofrecemos" y "Trabajamos" --- */
+    .tercera .caja,
+    .cuarta .trabajo-caja {
+        flex-direction: column; /* Apilamos los bloques */
+    }
+    .grid-container,
+    .trabajo-grid-container {
+        width: 100%;
+        max-width: 350px;
+    }
+    .tercera .bloque,
+    .cuarta .trabajo-bloque {
+        width: 100%;
+        min-height: auto;
+        padding: 25px;
+        margin: 5px 0;
+    }
+    .ofrecemos, .trabajamos-titulo {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    .grup1, .grup2, .grup3, .grup4,
+    .numero-circulo {
+        display: none; /* Ocultamos los íconos decorativos que no se adaptan bien */
+    }
+
+    /* --- SECCIÓN 5: VENTAJA --- */
+    .ventaja-titulo {
+        font-size: 2.5rem;
+    }
+
+    /* --- SECCIONES 6, 7, 8: Global Reach, etc. --- */
+    .sexta, .septima, .octava {
+        padding-left: 25px; /* Eliminamos el padding grande de la izquierda */
+        padding-right: 25px;
+        align-items: center; /* Centramos el contenido */
+    }
+    .global, .global-septima, .global-octava {
+        font-size: 1.5rem;
+    }
+    .parrafo-sexta, .parrafo-septima, .parrafo-octava {
+        font-size: 1.8rem;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    /* --- SECCIÓN 9: EXPERIENCIA --- */
+    .experiencia-container {
+        flex-direction: column; /* Apilamos las columnas */
+        gap: 20px;
+        width: 100%;
+    }
+    .experiencia-titulo {
+        padding-right: 0;
+        text-align: center;
+    }
+    .experiencia-titulo h2 {
+        font-size: 2.5rem;
+    }
+    .experiencia-texto {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px dotted #ffffff80;
+        padding-top: 30px;
+        padding-bottom: 0; /* Lo reseteamos para que no quede espacio extra */
+    }
+    .experiencia-texto p {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    /* --- SECCIÓN 10: PROFESIONALES --- */
+    .profesionales-texto {
+        font-size: 2rem;
+    }
+
+    /* --- SECCIÓN 11: CONTACTO --- */
+    .contacto-texto {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+    .info-contacto-container {
+        flex-direction: column; /* Apilamos los items de contacto */
+        gap: 25px;
+    }
+
+    /* --- SECCIÓN 12: GRACIAS --- */
+    .gracias {
+        font-size: 3rem;
+    }
+    .logo-despedida {
+        width: 200px;
+    }
+}
