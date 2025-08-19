@@ -993,7 +993,7 @@ body {
     .main > section {
         height: auto; /* La altura se ajustará al contenido */
         min-height: 100dvh; /* Cada sección ocupará al menos una pantalla de alto */
-        padding: 80px 25px; /* Más padding vertical, menos horizontal */
+        padding: 80px 50px; /* Más padding vertical, menos horizontal */
         display: flex;
         flex-direction: column;
         justify-content: center;
