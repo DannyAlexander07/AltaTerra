@@ -1017,6 +1017,18 @@ body {
     .logo {
         width: 12rem;
     }
+
+    .primera {
+        background-image: url('../Assets/video/1\ social_tecnologiamood_Imagen_de_un_ingeniero_de_minas_luciendo_ropa__f4bfcc2b-db1d-4d64-848c-577117b6a7d8_0.gif');
+        background-size: cover;
+        background-position: center right;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        z-index: 2000;
+    }
     
     /* --- SECCIÓN 2: HISTORIA --- */
     .historia-container {
@@ -1131,6 +1143,24 @@ body {
     }
 
     /* --- SECCIÓN 12: GRACIAS --- */
+
+    .doceava {
+        /* Mantenemos el fondo que ya tienes */
+        background-image: url('../Assets/video/1\ social_tecnologiamood_Imagen_de_un_ingeniero_de_minas_luciendo_ropa__f4bfcc2b-db1d-4d64-848c-577117b6a7d8_0.gif');
+        background-size: cover;
+        background-position: center left;
+        color: #ffffff;
+        
+        /* Tu layout de centrado es perfecto */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        /* La posición relativa es necesaria para que el overlay funcione */
+        position: relative; 
+        z-index: 4000;
+    }
     .gracias {
         font-size: 3rem;
     }
