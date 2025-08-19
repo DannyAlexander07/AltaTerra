@@ -388,8 +388,10 @@ body {
 .grup4 { bottom: -20px; right: -20px; }
 
 .icono-decorativo {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
+  object-fit: contain; /* o cover */
+  object-position: center;
 }
 
 
