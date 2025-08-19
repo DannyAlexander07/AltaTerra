@@ -32,18 +32,9 @@ body {
     grid-template-rows: repeat(12, 100dvh);
     /* Nombra cada una de las áreas de la cuadrícula para un fácil posicionamiento */
     grid-template-areas:
-        "parte1"
-        "parte2"
-        "parte3"
-        "parte4"
-        "parte5"
-        "parte6"
-        "parte7"
-        "parte8"
-        "parte9"
-        "parte10"
-        "parte11"
-        "parte12";
+        "parte1" "parte2" "parte3" "parte4"
+        "parte5" "parte6" "parte7" "parte8"
+        "parte9" "parte10" "parte11" "parte12";
 }
 
 /* Asigna cada sección a su área correspondiente */
@@ -72,6 +63,22 @@ body {
     position: relative; /* Base para posicionar elementos internos de forma absoluta */
     /*overflow: hidden; /* Evita que elementos se desborden */
 /*}*/ 
+
+/* ============================================================= */
+/* == ESTILOS PARA VIDEO DE FONDO (OPTIMIZACIÓN)            == */
+/* ============================================================= */
+.bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    object-fit: cover;
+}
 
 
 .main > section {
@@ -197,15 +204,12 @@ body {
 }
 
 .primera {
-    background-image: url('../Assets/video/1\ social_tecnologiamood_Imagen_de_un_ingeniero_de_minas_luciendo_ropa__f4bfcc2b-db1d-4d64-848c-577117b6a7d8_0.gif');
-    background-size: cover;
-    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: #ffffff;
-    z-index: 2000;
+    z-index: 4000;
 }
 
 .logo {
@@ -519,11 +523,6 @@ body {
 /* ============================================================= */
 .sexta {
     /* Fondo con overlay + imagen */
-    background: 
-        linear-gradient(#0a2a4b47, #0a2a4b51),
-        url('../Assets/video/2 social_tecnologiamood_Imagen_de_un_ingeniero_de_minas_luciendo_ropa__f4bfcc2b-db1d-4d64-848c-577117b6a7d8_0.gif');
-    background-size: cover;
-    background-position: center;
     color: #ffffff;
 
     /* Flexbox para alinear contenido */
@@ -563,15 +562,6 @@ body {
 /* ============================================================= */
 .septima {
     /* --- IMPORTANTE --- */
-    /* Reemplaza esta ruta con tu imagen de fondo */
-    background: 
-        /* Capa 1: Overlay oscuro para legibilidad */
-        linear-gradient(#0a2a4b28, #0a2a4b4f),
-        /* Capa 2: Tu imagen de fondo */
-        url('../Assets/video/4\ social_tecnologiamood_Imagen_de_un_ingeniero_de_minas_luciendo_ropa__f4bfcc2b-db1d-4d64-848c-577117b6a7d8_0.gif');
-    
-    background-size: cover;
-    background-position: center;
     color: #ffffff;
     
     display: flex;
@@ -607,15 +597,6 @@ body {
 
 .octava {
     /* --- IMPORTANTE --- */
-    /* Reemplaza esta ruta con tu imagen de fondo */
-    background: 
-        /* Capa 1: Overlay oscuro para legibilidad */
-        linear-gradient(#0a2a4b28, #0a2a4b4f),
-        /* Capa 2: Tu imagen de fondo */
-        url('../Assets/video/5\ social_tecnologiamood_Imagen_de_un_ingeniero_de_minas_luciendo_ropa__f4bfcc2b-db1d-4d64-848c-577117b6a7d8_0.gif');
-    
-    background-size: cover;
-    background-position: center;
     color: #ffffff;
     
     display: flex;
@@ -851,9 +832,6 @@ body {
 /* ============================================================= */
 .doceava {
     /* Mantenemos el fondo que ya tienes */
-    background-image: url('../Assets/video/1\ social_tecnologiamood_Imagen_de_un_ingeniero_de_minas_luciendo_ropa__f4bfcc2b-db1d-4d64-848c-577117b6a7d8_0.gif');
-    background-size: cover;
-    background-position: center;
     color: #ffffff;
     
     /* Tu layout de centrado es perfecto */
