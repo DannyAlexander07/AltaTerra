@@ -971,6 +971,20 @@ body {
         display: block; /* Cambiamos de grid a block para un scroll normal */
     }
 
+    .vid1 {
+        position: absolute;
+        top: 50%;
+        left: -10%;
+        transform: translate(-50%, -50%);
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        object-fit: cover;
+    }
+
+
     .main > section {
         height: auto; /* La altura se ajustará al contenido */
         min-height: 100dvh; /* Cada sección ocupará al menos una pantalla de alto */
@@ -1000,9 +1014,6 @@ body {
     }
 
     .primera {
-        background-image: url('../Assets/video/1\ social_tecnologiamood_Imagen_de_un_ingeniero_de_minas_luciendo_ropa__f4bfcc2b-db1d-4d64-848c-577117b6a7d8_0.gif');
-        background-size: cover;
-        background-position: center right;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1127,9 +1138,6 @@ body {
 
     .doceava {
         /* Mantenemos el fondo que ya tienes */
-        background-image: url('../Assets/video/1\ social_tecnologiamood_Imagen_de_un_ingeniero_de_minas_luciendo_ropa__f4bfcc2b-db1d-4d64-848c-577117b6a7d8_0.gif');
-        background-size: cover;
-        background-position: center left;
         color: #ffffff;
         
         /* Tu layout de centrado es perfecto */
