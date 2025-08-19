@@ -801,6 +801,7 @@ body {
 .info-icono img {
     width: 24px;
     height: 24px;
+    object-fit: contain; 
 }
 
 .info-link {
