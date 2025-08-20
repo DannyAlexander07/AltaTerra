@@ -126,9 +126,9 @@ body {
 }
 
 .header-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 20px;
     height: 80px; /* Altura del header */
     display: flex;
     justify-content: space-between;
@@ -136,16 +136,18 @@ body {
 }
 
 .header-logo img {
-    height: 30px; /* Tamaño del logo */
+    height: 55px; /* Tamaño del logo */
     width: auto;
 }
 
 .header-nav ul {
     margin: 0;
-    padding: 0;
+    padding: 0 20px;
     list-style: none;
     display: flex;
-    gap: 35px; /* Espacio entre los elementos del menú */
+    justify-content: center;
+    align-items: center;
+    gap:55px; /* Espacio entre los elementos del menú */
 }
 
 .header-nav a {
@@ -920,6 +922,16 @@ body {
         padding: 40px; /* Reducimos el padding horizontal */
     }
 
+    .header-nav ul {
+        margin: 0;
+        padding: 0 30px;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px; /* Espacio entre los elementos del menú */
+    }
+
     /* --- SECCIÓN 2 y 9: Columnas de texto --- */
     .historia-container,
     .experiencia-container {
@@ -974,7 +986,7 @@ body {
     .vid1 {
         position: absolute;
         top: 50%;
-        left: -10%;
+        left: 16%;
         transform: translate(-50%, -50%);
         min-width: 100%;
         min-height: 100%;
@@ -1005,7 +1017,7 @@ body {
         padding: 0 25px;
     }
     .header-logo img {
-        height: 24px;
+        height: 50px;
     }
 
     /* --- SECCIÓN 1: PORTADA --- */
