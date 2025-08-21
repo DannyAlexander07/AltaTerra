@@ -1162,9 +1162,6 @@ body {
         position: relative; 
         z-index: 4000;
     }
-    .gracias {
-        font-size: 3rem;
-    }
     .logo-despedida {
         width: 200px;
     }
